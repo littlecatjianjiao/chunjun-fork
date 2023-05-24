@@ -56,7 +56,7 @@ public class HBaseSourceFactoryTest {
     @Test
     public void testSourceFactoryForSyncWithTransform() throws IOException {
         SyncConfig conf =
-                SyncConfig.parseJob(HBaseTestUtil.readFile("hbase_stream_with_transform.json"));
+                SyncConfig.parseJob(HBaseTestUtil.readFile("hbase_stream_with_transform_2.json"));
         HBaseSourceFactoryBase factory = new TestSourceFactory(conf, env);
 
         RawTypeMapper converter = factory.getRawTypeMapper();
@@ -72,7 +72,7 @@ public class HBaseSourceFactoryTest {
 
     @Test
     public void testSourceFactoryForSync() throws IOException {
-        SyncConfig conf = SyncConfig.parseJob(HBaseTestUtil.readFile("hbase_stream.json"));
+        SyncConfig conf = SyncConfig.parseJob(HBaseTestUtil.readFile("hbase_stream_2.json"));
         HBaseSourceFactoryBase factory = new TestSourceFactory(conf, env);
 
         RawTypeMapper converter = factory.getRawTypeMapper();

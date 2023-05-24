@@ -19,13 +19,18 @@ name: Check Code.
 
 on:
   push:
+    branches:
+      - master
   pull_request:
     paths-ignore:
-      - 'chunjun-docker/*'
+      - 'chunjun-docker/**/*'
+      - 'chunjun-examples/**/*'
+      - 'chunjun-dev/**/*'
       - '**/*.md'
-      - 'docs/*'
-      - 'docs_zh/*'
-      - 'website/*'
+      - 'docs/**/*'
+      - 'docs_zh/**/*'
+      - 'website/**/*'
+      - '**/*.ftl'
 
 concurrency:
   group: backend-${{ github.event.pull_request.number || github.ref }}
@@ -67,7 +72,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        java: [ '8', '11' ]
+        java: [ '8' ]
         os: [ 'ubuntu-latest', 'windows-latest' ]
     timeout-minutes: 90
     steps:
@@ -90,7 +95,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        java: [ '8', '11' ]
+        java: [ '8' ]
         os: [ 'ubuntu-latest' ]
     timeout-minutes: 90
     steps:
