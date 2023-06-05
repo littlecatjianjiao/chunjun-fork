@@ -40,7 +40,7 @@ jobs:
   spotless-check:
     if: github.repository =='DTStack/chunjun'
     name: Check code style with spotless.
-    runs-on: ubuntu-latest, windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout code
@@ -59,7 +59,7 @@ jobs:
     if: github.repository =='DTStack/chunjun'
     name: Build the project.
     needs: [ spotless-check ]
-    runs-on: ubuntu-latest, windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
@@ -78,7 +78,7 @@ jobs:
 
   unit-test:
     needs: [ spotless-check ]
-    runs-on: ubuntu-latest, windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v3
@@ -97,7 +97,7 @@ jobs:
 
   integration-test:
     needs: [ spotless-check, unit-test ]
-    runs-on: ubuntu-latest, windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@v3
