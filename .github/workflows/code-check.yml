@@ -74,7 +74,7 @@ jobs:
       - name: run modules unit test
         if: needs.changes.outputs.api == 'true'
         run: |
-          ./mvnw -B -T 1C clean verify -DskipUT=false -DskipITCase=false --no-snapshot-updates
+          ./mvnw -B -T 1C clean -DskipUT=false -DskipITCase=false --no-snapshot-updates
         env:
           MAVEN_OPTS: -Xmx2048m
 

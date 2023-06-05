@@ -160,7 +160,7 @@ public class JdbcOutputFormatTest {
                 .when(jdbcOutputFormat)
                 .processWriteException(any(), anyInt(), any(RowData.class));
         Assert.assertThrows(
-                RuntimeException.class,
+                WriteRecordException.class,
                 () -> jdbcOutputFormat.writeSingleRecordInternal(new ColumnRowData(1)));
     }
 
