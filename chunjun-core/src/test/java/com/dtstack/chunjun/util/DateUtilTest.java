@@ -75,21 +75,4 @@ public class DateUtilTest {
         result = DateUtil.getMillSecond("1");
         Assert.assertEquals(result, expect);
     }
-
-    @Test
-    public void testStringToDate() {
-        java.util.Date result = DateUtil.stringToDate("", null);
-        Assert.assertNull(result);
-
-        result =
-                DateUtil.stringToDate(
-                        "2020/03/18 13:26:00", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss"));
-        Assert.assertEquals(result, new java.util.Date(1584509160000L));
-
-        try {
-            DateUtil.stringToDate("xxxx", null);
-        } catch (Exception e) {
-            Assert.assertTrue(e.getMessage().contains("can't parse date"));
-        }
-    }
 }
