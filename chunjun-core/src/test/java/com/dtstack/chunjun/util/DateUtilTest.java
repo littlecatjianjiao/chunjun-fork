@@ -23,7 +23,6 @@ import org.junit.Test;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 
 public class DateUtilTest {
 
