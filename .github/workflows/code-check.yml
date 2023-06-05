@@ -55,6 +55,29 @@ jobs:
         run: |
           ./mvnw spotless:check
 
+  build:
+    needs: [ spotless-check ]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        java: [ '8' ]
+        os: [ 'ubuntu-latest', 'windows-latest' ]
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v3
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+          cache: 'maven'
+      - name: build project
+        if: needs.changes.outputs.api == 'true'
+        run: |
+          ./mvnw -B -T 1C clean package -DskipUT=true -DskipITCase=true --no-snapshot-updates
+        env:
+          MAVEN_OPTS: -Xmx2048m
+
   unit-test:
     needs: [ spotless-check ]
     runs-on: ${{ matrix.os }}
